@@ -111,8 +111,10 @@ export VISUAL=nvim
 export GPG_TTY=$(tty)
 
 # get secrets if file exists
-if [ -f ~/dotfiles/.zsh_secrets ]; then
-  source ~/dotfiles/.zsh_secrets
+if [ -f ~/.dotfiles/zsh/.zsh_secrets ]; then
+  source ~/.dotfiles/zsh/.zsh_secrets;
+else
+  echo "no secrets found: make sure to add manually in ~/.dotfiles/zsh/.zsh_secrets";
 fi
 
 
