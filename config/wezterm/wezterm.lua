@@ -9,9 +9,11 @@ config.font_size = 13
 config.color_scheme = 'Catppuccin Mocha'
 -- remove title bar
 config.window_decorations = 'RESIZE'
-config.hide_tab_bar_if_only_one_tab = true
-config.enable_tab_bar = false
+-- config.hide_tab_bar_if_only_one_tab = true
+-- config.enable_tab_bar = false
 -- set default window size
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
 config.initial_cols = 142
 config.initial_rows = 44
 -- change background opacity
