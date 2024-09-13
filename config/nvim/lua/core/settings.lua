@@ -5,6 +5,8 @@ local settings = {
 
   colorcolumn = "80",
 
+  cursorline = true,
+
   -- use system clipboard
   clipboard = 'unnamed',
 
