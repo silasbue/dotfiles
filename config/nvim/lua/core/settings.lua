@@ -3,12 +3,7 @@ local settings = {
   number = true,
   relativenumber = true,
 
-  colorcolumn = "80",
-
   cursorline = true,
-
-  -- use system clipboard
-  clipboard = 'unnamed',
 
   -- don't wrap lines
   wrap = false,
