@@ -12,6 +12,14 @@ vim.g.mapleader = " "
 -- Save
 vim.keymap.set("n", "<leader>s", function() vim.cmd("write") end, opts)
 
+
+-- vim.keymap.set("n", "<leader>fa", function()
+--   require("conform").format({
+--     async = true,
+--     vim.api.nvim_get_current_buf()
+--   })
+-- end)
+
 -- Move text up and down
 vim.keymap.set("n", "‹", ":m .+1<CR>==", opts)
 vim.keymap.set("n", "∆", ":m .-2<CR>==", opts)
