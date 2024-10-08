@@ -6,20 +6,31 @@ config.font = wezterm.font 'FiraCode Nerd Font'
 config.font_size = 13
 
 -- UI
-config.color_scheme = 'Catppuccin Mocha'
+-- config.color_scheme = 'tokyonight_moon'
+config.color_scheme = 'Gruvbox Dark (Gogh)'
+-- config.color_scheme = 'Catppuccin Mocha'
+
+
+config.adjust_window_size_when_changing_font_size = false
+
 -- remove title bar
 config.window_decorations = 'RESIZE'
--- config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = true
 -- config.enable_tab_bar = false
 -- set default window size
-config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
+-- config.use_fancy_tab_bar = false
+-- config.tab_bar_at_bottom = true
 config.initial_cols = 142
 config.initial_rows = 44
 -- change background opacity
 config.window_background_opacity = 0.95
-config.macos_window_background_blur = 20
-
+config.macos_window_background_blur = 10
+-- config.window_padding = {
+--   left = 0,
+--   right = 0,
+--   top = 0,
+--   bottom = 0,
+-- }
 -- BEHAVIOUR
 -- by default (on macos) left option key is treated as the ALT key
 -- this disables that behaviour and treats it as option instead
@@ -52,7 +63,6 @@ config.keys = {
       end),
     },
   },
-
   { key = 't', mods = 'OPT', action = wezterm.action.ShowTabNavigator },
   {
     -- open interactive list of workspaces
