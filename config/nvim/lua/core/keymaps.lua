@@ -29,11 +29,9 @@ vim.keymap.set("v", "∆", ":m '<-2<CR>gv=gv", opts)
 
 -- Highlight all
 vim.keymap.set("n", "<leader>a", "ggVG", opts)
--- Format/indent all
-vim.keymap.set("n", "<leader>ia", "ggVG=<C-o>", opts)
 
 -- Go to hyperlink/highlighted
-vim.keymap.set("n", "<leader>gh", "<C-]>", opts)
+vim.keymap.set("n", "<leader>fl", "<C-]>", opts)
 
 -- go to next buffer
 vim.keymap.set({ "n", "i" }, "<c-l>", function() vim.cmd("bn") end, opts)
