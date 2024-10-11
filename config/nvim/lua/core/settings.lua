@@ -5,6 +5,7 @@ g.mapleader = " "        -- set space as leader key
 
 local o = vim.opt
 o.number = true
+o.shortmess:append "I"
 o.relativenumber = true
 o.showtabline = 2    -- ensure lualine tabline is always shown
 o.wrap = false       -- don't wrap text
