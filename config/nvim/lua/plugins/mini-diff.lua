@@ -1,7 +1,7 @@
 return {
   'echasnovski/mini.diff',
+  event = "BufRead",
   version = false,
-  lazy = false,
   opts = {},
   keys = {
     {

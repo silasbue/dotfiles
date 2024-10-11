@@ -2,15 +2,13 @@ return {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.3',
   dependencies = { 'nvim-lua/plenary.nvim' },
+  keys = { "<leader>f" },
+  cmd = { "Telescope" },
   config = function()
     local actions = require("telescope.actions")
-    local width = 0.95
-    local height = 0.95
 
     require('telescope').setup {
       defaults = {
-        -- Default configuration for telescope goes here:
-        -- config_key = value,
         mappings = {
           i = {
             -- map actions.which_key to <C-h> (default: <C-/>)
@@ -29,14 +27,6 @@ return {
         sorting_strategy = "ascending",
         layout_config = {
           prompt_position = "top",
-          horizontal = {
-            width = width,
-            height = height,
-          },
-          vertical = {
-            width = width,
-            height = height,
-          },
         },
       },
     }

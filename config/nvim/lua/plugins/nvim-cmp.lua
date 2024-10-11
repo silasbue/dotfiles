@@ -1,5 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
+  event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     'neovim/nvim-lspconfig',
     'hrsh7th/cmp-nvim-lsp',
@@ -44,7 +45,7 @@ return {
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
-            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
+            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
             -- they way you will only jump inside the snippet region
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()

@@ -1,17 +1,20 @@
 return {
   'nvim-lualine/lualine.nvim',
+  event = "BufRead",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    "folke/tokyonight.nvim"
   },
   opts = {
-    disabled_filetypes = { 'NvimTree' },
+    options = {
+      theme = 'auto',
+      disabled_filetypes = { 'dashboard' }
+    },
     tabline = {
       lualine_a = {
         {
           'buffers',
           symbols = {
-            alternate_file = '', -- remove icon for alternate file
+            -- alternate_file = '*',
           },
         }
       },
@@ -19,7 +22,7 @@ return {
       lualine_c = {},
       lualine_x = {},
       lualine_y = {},
-      lualine_z = { 'tabs' }
+      lualine_z = {}
     },
   }
 }
