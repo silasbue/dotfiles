@@ -1,36 +1,20 @@
-local settings = {
-  -- show relative line numbers
-  number = true,
-  relativenumber = true,
+local g = vim.g
+g.loaded_netrw = 1       -- disable default file explorer
+g.loaded_netrwplugin = 1 -- -||-
+g.mapleader = " "        -- set space as leader key
 
-  cursorline = true,
-
-  -- don't wrap lines
-  wrap = false,
-
-  -- always show sign column
-  signcolumn = 'yes',
-
-  -- ignore case in search patterns
-  ignorecase = true,
-  smartcase = true,
-
-  -- tab configs
-  tabstop = 2,
-  shiftwidth = 2,
-  expandtab = true,
-  smartindent = true,
-
-  -- show correct colors
-  termguicolors = true,
-
-  -- leave space between cursor and bottom + top of page
-  scrolloff = 8,
-
-  -- show X amount of items in popup menus
-  pumheight = 8,
-}
-
-for k, v in pairs(settings) do
-  vim.opt[k] = v
-end
+local o = vim.opt
+o.number = true
+o.relativenumber = true
+o.showtabline = 2    -- ensure lualine tabline is always shown
+o.wrap = false       -- don't wrap text
+o.signcolumn = 'yes' -- always show signcolumn
+o.ignorecase = true  -- ignore case when searching
+o.smartcase = true   -- -||-
+o.tabstop = 2        -- misc tab settings
+o.shiftwidth = 2     -- -||-
+o.expandtab = true
+o.smartindent = true
+o.termguicolors = true -- use correct colors
+o.scrolloff = 8        -- always keep a gap of X characters between cursor and top/bottom
+o.pumheight = 8        -- show a max of X number of items in popups
