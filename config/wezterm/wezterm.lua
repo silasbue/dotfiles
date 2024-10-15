@@ -22,7 +22,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.initial_cols = 142
 config.initial_rows = 44
 -- change background opacity
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.95
 config.macos_window_background_blur = 10
 -- config.window_padding = {
 --   left = 0,

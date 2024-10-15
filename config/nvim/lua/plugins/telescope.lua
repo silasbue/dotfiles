@@ -1,26 +1,24 @@
 return {
   'nvim-telescope/telescope.nvim',
-  tag = '0.1.3',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  keys = { "<leader>f" },
+  dependencies = { 'nvim-lua/plenary.nvim', { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', "nvim-telescope/telescope-file-browser.nvim", } },
+  keys = {
+    { "<leader>ff", mode = { "n" }, function() require("telescope.builtin").find_files() end, desc = "Find files" },
+    { "<leader>fg", mode = { "n" }, function() require("telescope.builtin").live_grep() end,  desc = "Search in files" },
+    { "<leader>fb", mode = { "n" }, function() require("telescope.builtin").buffers() end,    desc = "Find huffers" },
+    { "<leader>fh", mode = { "n" }, function() require("telescope.builtin").help_tags() end,  desc = "Find help tags" },
+    { "<leader>fe", mode = { "n" }, function() vim.cmd("Telescope file_browser") end,     desc = "Telescope file browser" }
+  },
   cmd = { "Telescope" },
   config = function()
     local actions = require("telescope.actions")
-
     require('telescope').setup {
       defaults = {
         mappings = {
           i = {
-            -- map actions.which_key to <C-h> (default: <C-/>)
-            -- actions.which_key shows the mappings for your picker,
-            -- e.g. git_{create, delete, ...}_branch for the git_branches picker
-            ["<C-h>"] = "which_key",
             ["<esc>"] = actions.close,
-            ["<C-j>"] = actions.move_selection_next,
-            ["<C-k>"] = actions.move_selection_previous,
+            ["<c-h>"] = actions.which_key,
           }
         },
-
         prompt_prefix = " ",
         selection_caret = " ",
         layout_strategy = "horizontal",
@@ -29,14 +27,26 @@ return {
           prompt_position = "top",
         },
       },
+      extensions = {
+        file_browser = {
+          theme = "ivy",
+          -- disables netrw and use telescope-file-browser in its place
+          hijack_netrw = true,
+          mappings = {
+            ["i"] = {
+              -- your custom insert mode mappings
+            },
+            ["n"] = {
+              -- your custom normal mode mappings
+            },
+          },
+        },
+      },
     }
-    local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+    require('telescope').load_extension('fzf') -- Use fzf
+    require("telescope").load_extension("file_browser")
 
-    -- style telescope
+    -- Telescope styling
     local colors = require("catppuccin.palettes").get_palette()
     local TelescopeColor = {
       TelescopeMatching = { fg = colors.flamingo },

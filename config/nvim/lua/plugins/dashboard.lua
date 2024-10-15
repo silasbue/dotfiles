@@ -7,6 +7,7 @@ return {
     require('dashboard').setup {
       theme = "hyper",
       config = {
+        -- special header used for fridays :)
         header = {
           [[                                                                   ]],
           [[                                                                   ]],
@@ -48,6 +49,7 @@ return {
           },
         },
       },
+      -- color changes on fridays :)
       (day == "Friday") and vim.cmd [[ hi DashboardHeader guifg=#E5A47E]]
     }
   end,

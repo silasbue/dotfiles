@@ -1,6 +1,5 @@
 return {
   "folke/flash.nvim",
-  -- event = "VeryLazy",
   opts = {
     modes = {
       -- disable flash on normal search (<c-s> while in search mode will still trigger flash search)

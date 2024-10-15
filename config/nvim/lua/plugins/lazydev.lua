@@ -11,7 +11,7 @@ return {
   },
   { "Bilal2453/luvit-meta",        lazy = true }, -- `vim.uv` typings
   { "justinsgithub/wezterm-types", lazy = true }, -- `wezterm` typings
-  {                                               -- optional completion source for require statements and module annotations
+  {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
       opts.sources = opts.sources or {}
@@ -21,5 +21,4 @@ return {
       })
     end,
   },
-  -- { "folke/neodev.nvim", enabled = false }, -- make sure to uninstall or disable neodev.nvim
 }
