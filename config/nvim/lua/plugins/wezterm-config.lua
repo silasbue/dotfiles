@@ -11,17 +11,17 @@ return {
       append_wezterm_to_rtp = false,
     })
 
-    wez.set_wezterm_user_var('window_padding', {
-      left = 0,
-      right = 0,
-      top = 0,
-      bottom = 0,
-    })
-    vim.api.nvim_create_autocmd('VimLeavePre', {
-      callback = function()
-        wez.set_wezterm_user_var('window_padding', {})
-      end
-    })
+    -- wez.set_wezterm_user_var('window_padding', {
+    --   left = 0,
+    --   right = 0,
+    --   top = 0,
+    --   bottom = 0,
+    -- })
+    -- vim.api.nvim_create_autocmd('VimLeavePre', {
+    --   callback = function()
+    --     wez.set_wezterm_user_var('window_padding', {})
+    --   end
+    -- })
 
     vim.api.nvim_create_autocmd('ColorScheme', {
       pattern = "catppuccin-mocha",
