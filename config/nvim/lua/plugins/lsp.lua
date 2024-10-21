@@ -1,23 +1,17 @@
 return {
-  "williamboman/mason.nvim",
+  "neovim/nvim-lspconfig",
   event = "BufRead",
   dependencies = {
+    "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-nvim-lsp',
   },
   config = function()
     require("mason").setup()
     require("mason-lspconfig").setup()
 
-    -- add default cmp-nvim-lsp capabilities to each lsp
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
     require("mason-lspconfig").setup_handlers {
       function(server_name)
-        require("lspconfig")[server_name].setup {
-          capabilities = capabilities,
-        }
+        require("lspconfig")[server_name].setup({})
       end,
     }
 
@@ -28,7 +22,6 @@ return {
         require("which-key").add({
           { "gD",         vim.lsp.buf.declaration,             mode = { "n" },      desc = "lsp declaration",             buffer = cur_buf },
           { "gd",         vim.lsp.buf.definition,              mode = { "n" },      desc = "lsp definition",              buffer = cur_buf },
-          { "K",          vim.lsp.buf.hover,                   mode = { "n" },      desc = "lsp hover",                   buffer = cur_buf },
           { "gi",         vim.lsp.buf.implementation,          mode = { "n" },      desc = "lsp implementation",          buffer = cur_buf },
           { "<c-k>",      vim.lsp.buf.signature_help,          mode = { "n" },      desc = "lsp signature_help",          buffer = cur_buf },
           { "<leader>wa", vim.lsp.buf.add_workspace_folder,    mode = { "n" },      desc = "lsp add workspace folder",    buffer = cur_buf },
