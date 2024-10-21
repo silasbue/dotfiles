@@ -9,8 +9,7 @@ return {
       },
     },
   },
-  { "Bilal2453/luvit-meta",        lazy = true }, -- `vim.uv` typings
-  { "justinsgithub/wezterm-types", lazy = true }, -- `wezterm` typings
+  { "Bilal2453/luvit-meta", lazy = true }, -- `vim.uv` typings
   {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
