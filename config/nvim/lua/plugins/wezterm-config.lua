@@ -1,6 +1,6 @@
 return {
   'winter-again/wezterm-config.nvim',
-  cmd = "Colorscheme",
+  event = "VeryLazy",
   config = function()
     -- changing this to true means the plugin will try to append
     -- $HOME/.config/wezterm' to your RTP, meaning you can more conveniently
