@@ -26,7 +26,7 @@ return {
     vim.api.nvim_create_autocmd('ColorScheme', {
       pattern = "catppuccin-mocha",
       callback = function()
-        wez.set_wezterm_user_var('color_scheme', 'Gruvbox Dark (Gogh)')
+        wez.set_wezterm_user_var('color_scheme', 'GruvboxDarkHard')
       end
     })
     vim.api.nvim_create_autocmd('ColorScheme', {
