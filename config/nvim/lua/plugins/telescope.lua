@@ -1,12 +1,11 @@
 return {
   'nvim-telescope/telescope.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim', { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', "nvim-telescope/telescope-file-browser.nvim", } },
+  dependencies = { 'nvim-lua/plenary.nvim', { 'nvim-telescope/telescope-fzf-native.nvim' } },
   keys = {
-    { "<leader>ff", mode = { "n" }, function() require("telescope.builtin").find_files() end, desc = "Find files" },
-    { "<leader>fg", mode = { "n" }, function() require("telescope.builtin").live_grep() end,  desc = "Search in files" },
-    { "<leader>fb", mode = { "n" }, function() require("telescope.builtin").buffers() end,    desc = "Find huffers" },
-    { "<leader>fh", mode = { "n" }, function() require("telescope.builtin").help_tags() end,  desc = "Find help tags" },
-    { "<leader>fe", mode = { "n" }, function() vim.cmd("Telescope file_browser") end,     desc = "Telescope file browser" }
+    { "<leader>z", mode = { "n" }, function() require("telescope.builtin").find_files() end, desc = "Find files" },
+    { "<leader>g", mode = { "n" }, function() require("telescope.builtin").live_grep() end,  desc = "Search in files" },
+    { "<leader>b", mode = { "n" }, function() require("telescope.builtin").buffers() end,    desc = "Find huffers" },
+    { "<leader>h", mode = { "n" }, function() require("telescope.builtin").help_tags() end,  desc = "Find help tags" },
   },
   cmd = { "Telescope" },
   config = function()
@@ -44,7 +43,6 @@ return {
       },
     }
     require('telescope').load_extension('fzf') -- Use fzf
-    require("telescope").load_extension("file_browser")
 
     -- Telescope styling
     local colors = require("catppuccin.palettes").get_palette()
