@@ -12,6 +12,7 @@ return {
     local actions = require("telescope.actions")
     require('telescope').setup {
       defaults = {
+        path_display = { "filename_first" },
         mappings = {
           i = {
             ["<esc>"] = actions.close,
@@ -20,25 +21,11 @@ return {
         },
         prompt_prefix = " ",
         selection_caret = " ",
-        layout_strategy = "horizontal",
+        layout_strategy = "flex",
         sorting_strategy = "ascending",
         layout_config = {
           prompt_position = "top",
-        },
-      },
-      extensions = {
-        file_browser = {
-          theme = "ivy",
-          -- disables netrw and use telescope-file-browser in its place
-          hijack_netrw = true,
-          mappings = {
-            ["i"] = {
-              -- your custom insert mode mappings
-            },
-            ["n"] = {
-              -- your custom normal mode mappings
-            },
-          },
+          vertical = { mirror = true },
         },
       },
     }
@@ -49,14 +36,13 @@ return {
     local TelescopeColor = {
       TelescopeMatching = { fg = colors.flamingo },
       TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
-
       TelescopePromptPrefix = { bg = colors.surface0 },
       TelescopePromptNormal = { bg = colors.surface0 },
       TelescopeResultsNormal = { bg = colors.mantle },
       TelescopePreviewNormal = { bg = colors.mantle },
       TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
       TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-      TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
+      TelescopePreviewBorder = { bg = colors.mantle, fg = colors.green }, -- change fg to mantle to hide border completely
       TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
       TelescopeResultsTitle = { fg = colors.mantle },
       TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },

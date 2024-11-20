@@ -13,6 +13,8 @@ wezterm.on('update-right-status', function(window, pane)
   window:set_right_status(window:active_workspace())
 end)
 
+config.max_fps = 120
+config.animation_fps = 120
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.color_scheme = 'GruvboxDarkHard'

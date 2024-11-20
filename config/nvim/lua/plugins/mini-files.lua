@@ -17,6 +17,6 @@ return {
     }
   },
   keys = {
-    { "<leader>e", mode = { "n" }, function() MiniFiles.open() end, desc = "Open File Explorer" }
+    { "<leader>me", mode = { "n" }, function() MiniFiles.open() end, desc = "Open File Explorer" }
   }
 }

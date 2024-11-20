@@ -9,7 +9,10 @@ return {
     highlight = {
       use_nvim_cmp_as_default = true,
     },
-    keymap = { preset = 'super-tab' },
+    keymap = {
+      preset = 'super-tab',
+      ['<CR>'] = { 'accept', 'fallback' },
+    },
     accept = { auto_brackets = { enabled = true } },   -- experimental auto-brackets support
     trigger = { signature_help = { enabled = true } }, -- experimental signature help support
   }
