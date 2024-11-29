@@ -1,6 +1,7 @@
-ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/zsh/custom/*.zsh ~/.oh-my-zsh/custom
+ln -sf ~/.dotfiles/zsh/.zshrc ~/.zshrc
+ln -sf ~/.dotfiles/zsh/custom/*.zsh ~/.oh-my-zsh/custom
+ln -sf ~/.dotfiles/zsh/oh-my-zsh.sh ~/.oh-my-zsh/
 
-ln -s ~/.dotfiles/config/* ~/.config
+ln -sf ~/.dotfiles/config/* ~/.config
 
-ln -s ~/.dotfiles/bin ~/bin
+ln -sf ~/.dotfiles/bin ~/bin
