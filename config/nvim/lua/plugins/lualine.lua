@@ -1,13 +1,13 @@
 return {
   'nvim-lualine/lualine.nvim',
-  event = { "BufRead" },
+  event = { "VeryLazy" },
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
   opts = {
     options = {
       theme = 'auto',
-      disabled_filetypes = { 'dashboard', 'neo-tree' },
+      disabled_filetypes = { 'dashboard', 'neo-tree', 'snacks_dashboard' },
       section_separators = '',
       component_separators = '',
     },
