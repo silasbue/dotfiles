@@ -1,6 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
-  event = "VeryLazy",
+  event = { "BufRead" },
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
@@ -8,6 +8,8 @@ return {
     options = {
       theme = 'auto',
       disabled_filetypes = { 'dashboard', 'neo-tree' },
+      section_separators = '',
+      component_separators = '',
     },
     sections = {
       lualine_a = { 'mode' },
@@ -18,12 +20,25 @@ return {
       lualine_z = { 'location' }
     },
     tabline = {
-      lualine_a = { 'buffers' },
-      lualine_b = {},
+      lualine_a = {
+      },
+      lualine_b = {
+
+        {
+          'buffers',
+          show_filename_only = true, -- Shows shortened relative path when set to false.
+          mode = 0,
+          symbols = {
+            modified = ' ●', -- Text to show when the buffer is modified
+            alternate_file = '', -- Text to show to identify the alternate file
+            directory = '', -- Text to show when the buffer is a directory
+          },
+        }
+      },
       lualine_c = {},
       lualine_x = {},
-      lualine_y = {},
-      lualine_z = { 'tabs' },
+      lualine_y = { 'tabs' },
+      lualine_z = {},
     },
   }
 }

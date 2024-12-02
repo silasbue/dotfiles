@@ -1,6 +1,6 @@
 return {
   'echasnovski/mini.diff',
-  event = "BufRead",
+  event = { "BufRead", "BufNewFile" },
   version = false,
   opts = {},
   keys = {

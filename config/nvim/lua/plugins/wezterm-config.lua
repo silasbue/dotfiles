@@ -1,6 +1,6 @@
 return {
   'winter-again/wezterm-config.nvim',
-  event = "VeryLazy",
+  keys = { "<leader>u" },
   config = function()
     -- changing this to true means the plugin will try to append
     -- $HOME/.config/wezterm' to your RTP, meaning you can more conveniently
@@ -24,13 +24,13 @@ return {
     -- })
 
     vim.api.nvim_create_autocmd('ColorScheme', {
-      pattern = "catppuccin-mocha",
+      pattern = "catppuccin-latte",
       callback = function()
-        wez.set_wezterm_user_var('color_scheme', 'GruvboxDarkHard')
+        wez.set_wezterm_user_var('color_scheme', 'catppuccin-mocha')
       end
     })
     vim.api.nvim_create_autocmd('ColorScheme', {
-      pattern = "catppuccin-latte",
+      pattern = "catppuccin-mocha",
       callback = function()
         wez.set_wezterm_user_var('color_scheme', 'catppuccin-latte')
       end

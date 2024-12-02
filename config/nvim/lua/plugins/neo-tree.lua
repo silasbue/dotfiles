@@ -1,7 +1,9 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
+  enabled = false,
   branch = "v3.x",
   lazy = false,
+  cmd = { "NeoTree" },
   keys = {
     { "<leader>e", mode = { "n" }, ":Neotree toggle reveal left<cr>", desc = "Open File Explorer" },
   },

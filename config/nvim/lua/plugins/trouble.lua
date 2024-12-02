@@ -1,6 +1,6 @@
 return {
   "folke/trouble.nvim",
-  event = "BufRead",
+  event = { "BufRead", "BufNewFile" },
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {},
 }

@@ -17,13 +17,14 @@ config.max_fps = 120
 config.animation_fps = 120
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
-config.color_scheme = 'GruvboxDarkHard'
+-- config.color_scheme = 'GruvboxDarkHard'
+config.color_scheme = 'catppuccin-mocha'
 -- config.color_scheme = 'tokyonight'
-config.font = wezterm.font('FiraCode Nerd Font')
+config.font = wezterm.font('FiraCode Nerd Font', { weight = 'Medium' })
 config.font_size = 13
 config.adjust_window_size_when_changing_font_size = false
 config.window_decorations = 'RESIZE' -- remove title bar
--- config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = true
 config.initial_cols = 142            -- startup window sizing
 config.initial_rows = 44             -- -||-
 -- config.window_background_opacity = 0.85

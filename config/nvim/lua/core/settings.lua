@@ -18,3 +18,4 @@ o.expandtab = true
 o.smartindent = true
 o.termguicolors = true -- use correct colors
 o.scrolloff = 8        -- always keep a gap of X characters between cursor and top/bottom
+o.laststatus = 3
