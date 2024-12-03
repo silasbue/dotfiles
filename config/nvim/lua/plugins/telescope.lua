@@ -1,6 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim', { 'nvim-telescope/telescope-fzf-native.nvim' } },
+  dependencies = { 'nvim-lua/plenary.nvim', { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
   keys = {
     { "<leader>zf", mode = { "n" }, function() require("telescope.builtin").find_files() end, desc = "Find files" },
     { "<leader>zg", mode = { "n" }, function() require("telescope.builtin").live_grep() end,  desc = "Search in files" },
@@ -29,7 +29,7 @@ return {
         },
       },
     }
-    require('telescope').load_extension('fzf') -- Use fzf
+    -- require('telescope').load_extension('fzf') -- Use fzf
 
     -- Telescope styling
     local colors = require("catppuccin.palettes").get_palette()
