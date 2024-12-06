@@ -1,0 +1,44 @@
+body {
+  transform: translateY(-84px);
+  height: calc(100% + 84px) !important;
+}
+
+#PlacesToolbarItems {
+  opacity: 0.4;
+  transition: opacity 100ms linear;
+}
+
+.titlebar-buttonbox-container {
+  visibility: collapse;
+}
+
+#urlbar {
+  transform: translateY(-84px);
+  opacity: 0;
+  transition: transform 600ms cubic-bezier(0.33, 1, 0.68, 1), opacity 400ms linear !important;
+}
+
+#navigator-toolbox {
+  transition: transform 600ms cubic-bezier(0.33, 1, 0.68, 1) !important;
+  z-index: 10000 !important;
+}
+
+#navigator-toolbox:hover #urlbar, #urlbar[focused] {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+/*#navigator-toolbox:has(#urlbar[focused]) {*/
+/*  transform: translateY(40px)*/
+/*}*/
+
+#navigator-toolbox:hover {
+  transform: translateY(84px);
+}
+#navigator-toolbox:hover #PlacesToolbarItems {
+  opacity: 1;
+}
+
+/*#navigator-toolbox:hover #urlbar, #navigator-toolbox:hover {*/
+/*  transition-delay: 350ms !important;*/
+/*}*/
