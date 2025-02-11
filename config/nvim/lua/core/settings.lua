@@ -2,6 +2,7 @@ local g = vim.g
 g.loaded_netrw = 1       -- disable default file explorer
 g.loaded_netrwplugin = 1 -- -||-
 g.mapleader = " "        -- set space as leader key
+g.coqtail_nomap = 1
 
 local o = vim.opt
 o.number = true
