@@ -9,26 +9,31 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
   window:set_config_overrides(overrides)
 end)
 
+-- tab bar styling
 wezterm.on('update-right-status', function(window, pane)
-  window:set_right_status(window:active_workspace())
+  local bat = ''
+  for _, b in ipairs(wezterm.battery_info()) do
+    bat = string.format('%.0f%%', b.state_of_charge * 100)
+  end
+  window:set_right_status(string.format(" %s | %s | [%s] ", window:active_workspace(), bat, wezterm.strftime("%H:%M")))
 end)
 
+config.tab_max_width = 32
 config.max_fps = 120
-config.animation_fps = 120
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
--- config.color_scheme = 'GruvboxDarkHard'
 config.color_scheme = 'catppuccin-mocha'
--- config.color_scheme = 'tokyonight'
-config.font = wezterm.font('FiraCode Nerd Font', { weight = 'Medium' })
-config.font_size = 13
+config.font = wezterm.font('FiraCode Nerd Font Mono', { weight = 600 })
+config.font_size = 14
+config.line_height = 0.95
 config.adjust_window_size_when_changing_font_size = false
 config.window_decorations = 'RESIZE' -- remove title bar
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 config.initial_cols = 142            -- startup window sizing
 config.initial_rows = 44             -- -||-
 -- config.window_background_opacity = 0.85
 -- config.macos_window_background_blur = 20
+--
 -- by default (on macos) left option key is treated as the ALT key
 -- this disables that behaviour and treats it as option instead
 config.send_composed_key_when_left_alt_is_pressed = true
