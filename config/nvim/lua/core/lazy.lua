@@ -18,8 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    -- only load plugins in 'vs-code-plugins' folder when config is loaded in vscode
-    { import = vim.g.vscode and "vs-code-plugins" or "plugins" }
+    { import = "plugins" }
   },
   rocks = {
     enabled = false

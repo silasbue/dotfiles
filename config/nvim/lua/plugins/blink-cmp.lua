@@ -10,7 +10,7 @@ return {
       use_nvim_cmp_as_default = true,
     },
     keymap = {
-      preset = 'default',
+      preset = 'super-tab',
     },
     signature = { enabled = true }
 
