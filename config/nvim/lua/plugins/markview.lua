@@ -1,7 +1,6 @@
 return {
   "OXY2DEV/markview.nvim",
   ft = "markdown",
-  enabled = false,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     "nvim-tree/nvim-web-devicons"
@@ -14,8 +13,11 @@ return {
 
     require("markview").setup({
       checkboxes = presets.checkboxes.nerd,
+      markdown = {
+
       headings = presets.headings.glow,
       horizontal_rules = presets.horizontal_rules.thin,
+      }
     })
   end
 }
