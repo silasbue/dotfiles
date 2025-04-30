@@ -175,3 +175,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Created by `pipx` on 2025-03-29 11:23:42
+export PATH="$PATH:/Users/silasbue/.local/bin"
