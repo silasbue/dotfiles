@@ -31,9 +31,9 @@ return {
     "gK",
     mode = { "n" },
     function()
-      local new_config = not vim.diagnostic.config().virtual_lines
-      vim.diagnostic.config({ virtual_lines = new_config })
+      local new_config = not vim.diagnostic.config().virtual_text
+      vim.diagnostic.config({ virtual_text = new_config })
     end,
-    desc = "Toggle diagnostic virtual_lines"
+    desc = "Toggle diagnostic virtual_text"
   }
 }
