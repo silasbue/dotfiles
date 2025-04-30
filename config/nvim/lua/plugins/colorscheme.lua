@@ -2,11 +2,10 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = false,
-    enabled = false,
+    -- enabled = false,
     priority = 1000,
     config = function()
       require("tokyonight").setup({
-        transparent = true,
       })
     end
   },
@@ -17,7 +16,7 @@ return {
     priority = 1000,
     config = function()
       require("catppuccin").setup({
-        transparent_background = not vim.g.neovide,
+        transparent_background = true,
         integrations = {
           indent_blankline = {
             enabled = true,
@@ -29,5 +28,11 @@ return {
 
       vim.cmd("colorscheme catppuccin")
     end
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = true,
+    opts = {}
   }
 }

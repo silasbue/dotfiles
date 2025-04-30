@@ -5,15 +5,18 @@ end
 -- keymaps required in which-key.lua plugin to enable lazy loading.
 return {
   { "<leader>s", mode = { "n" }, cmd("write"), desc = "Save current Buffer" },
-  { "<c-l>",     mode = { "n" }, cmd("bn"),    desc = "Go to next Buffer" },
-  { "<c-h>",     mode = { "n" }, cmd("bp"),    desc = "Go to previous Buffer" },
-  { "<tab>",     mode = { "n" }, "<c-6>",      desc = "Go to *last* Buffer" },
-  { "<leader>q", mode = { "n" }, cmd(":q"),    desc = "Close current Buffer" },
+  { "<tab>",     mode = { "n" }, cmd("bn"),    desc = "Go to next Buffer" },
+  { "<m-n>",     mode = { "n" }, cmd("bn"),    desc = "Go to next Buffer" },
+  { "<s-tab>",     mode = { "n" }, cmd("bp"),    desc = "Go to previous Buffer" },
+  -- { "<tab>",     mode = { "n" }, "<c-6>",      desc = "Go to *last* Buffer" },
+  { "<leader>q", mode = { "n" }, cmd("bd"),    desc = "Close current Buffer" },
   { "<leader>a", mode = { "n" }, "ggVG",       desc = "Highlight all text" },
-  { "<leader>h", mode = { "n" }, "<c-w>h" },
-  { "<leader>j", mode = { "n" }, "<c-w>j" },
-  { "<leader>k", mode = { "n" }, "<c-w>k" },
-  { "<leader>l", mode = { "n" }, "<c-w>l" },
+  { "<c-h>", mode = { "n" }, "<c-w>h" },
+  { "<c-j>", mode = { "n" }, "<c-w>j" },
+  { "<c-k>", mode = { "n" }, "<c-w>k" },
+  { "<c-l>", mode = { "n" }, "<c-w>l" },
+  { "<leader>k", mode = { "n" }, "<c-]>", desc = "Jump to Subject" },
+  { "<c-q>", mode = { "n" }, ":qall<cr>", desc = "Quit All" },
   {
     "<leader>mm",
     mode = { "n" },
@@ -24,4 +27,13 @@ return {
     end,
     desc = "fill qf list with marks"
   },
+  {
+    "gK",
+    mode = { "n" },
+    function()
+      local new_config = not vim.diagnostic.config().virtual_lines
+      vim.diagnostic.config({ virtual_lines = new_config })
+    end,
+    desc = "Toggle diagnostic virtual_lines"
+  }
 }

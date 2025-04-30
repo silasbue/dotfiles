@@ -20,3 +20,6 @@ o.smartindent = true
 o.termguicolors = true -- use correct colors
 o.scrolloff = 8        -- always keep a gap of X characters between cursor and top/bottom
 o.laststatus = 3
+
+vim.diagnostic.config({ virtual_lines = false })
+vim.lsp.enable({ 'lua_ls', 'clangd', 'jedi_language_server' })

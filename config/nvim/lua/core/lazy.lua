@@ -18,7 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    { import = "plugins" }
+    { import = vim.g.vscode and "vs-code-plugins" or "plugins" }
   },
   rocks = {
     enabled = false

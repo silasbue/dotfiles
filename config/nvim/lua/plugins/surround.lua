@@ -5,8 +5,8 @@ return {
     mappings = {
       add = 'ys',             -- Add surrounding in Normal and Visual modes
       delete = 'ds',          -- Delete surrounding
-      find = 'fs',            -- Find surrounding (to the right)
-      find_left = 'Fs',       -- Find surrounding (to the left)
+      -- find = 'fs',            -- Find surrounding (to the right)
+      -- find_left = 'Fs',       -- Find surrounding (to the left)
       highlight = 'ysh',      -- Highlight surrounding
       replace = 'cs',         -- Replace surrounding
       update_n_lines = 'ysn', -- Update `n_lines`

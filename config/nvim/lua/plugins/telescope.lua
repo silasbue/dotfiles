@@ -6,6 +6,7 @@ return {
     { "<leader>zg", mode = { "n" }, function() require("telescope.builtin").live_grep() end,  desc = "Search in files" },
     { "<leader>zb", mode = { "n" }, function() require("telescope.builtin").buffers() end,    desc = "Find huffers" },
     { "<leader>zh", mode = { "n" }, function() require("telescope.builtin").help_tags() end,  desc = "Find help tags" },
+    { "<leader>zc", mode = { "n" }, function() require("telescope.builtin").colorscheme() end,  desc = "Find colorschemes" },
   },
   cmd = { "Telescope" },
   config = function()

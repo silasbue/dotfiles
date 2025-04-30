@@ -164,7 +164,7 @@ config.keys = {
     action = wezterm.action.ActivatePaneDirection 'Right',
   },
   {
-    key = 'æ',
+    key = 'z',
     mods = 'CMD',
     action = wezterm.action.TogglePaneZoomState,
 
@@ -174,7 +174,7 @@ config.keys = {
     mods = 'SHIFT|CTRL',
     action = wezterm.action.Search { CaseInSensitiveString = 'hash' },
   },
-  {key="o", mods="CTRL",
+  {key="o", mods="CMD",
      action=wezterm.action{QuickSelectArgs={
        patterns={
           "https?://\\S+"

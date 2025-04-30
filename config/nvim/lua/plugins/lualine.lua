@@ -36,7 +36,7 @@ return {
         }
       },
       lualine_c = {},
-      lualine_x = {},
+      lualine_x = { 'encoding', 'fileformat', 'filetype' },
       lualine_y = { 'tabs' },
       lualine_z = {},
     },
