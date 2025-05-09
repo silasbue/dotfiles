@@ -2,7 +2,6 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = false,
-    -- enabled = false,
     priority = 1000,
     config = function()
       require("tokyonight").setup({
@@ -16,7 +15,7 @@ return {
     priority = 1000,
     config = function()
       require("catppuccin").setup({
-        transparent_background = true,
+        transparent_background = false,
         integrations = {
           indent_blankline = {
             enabled = true,
@@ -26,7 +25,7 @@ return {
         }
       })
 
-      vim.cmd("colorscheme catppuccin")
+      vim.cmd("colorscheme catppuccin-macchiato")
     end
   },
   {

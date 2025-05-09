@@ -2,7 +2,7 @@ local function cmd(x)
   return function() vim.cmd(x) end
 end
 
--- keymaps required in which-key.lua plugin to enable lazy loading.
+-- keymaps are loaded in which-key.lua plugin.
 return {
   { "<leader>s", mode = { "n" }, cmd("write"), desc = "Save current Buffer" },
   { "<tab>",     mode = { "n" }, cmd("bn"),    desc = "Go to next Buffer" },
