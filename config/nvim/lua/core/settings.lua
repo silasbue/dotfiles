@@ -21,5 +21,24 @@ o.termguicolors = true -- use correct colors
 o.scrolloff = 8        -- always keep a gap of X characters between cursor and top/bottom
 o.laststatus = 3
 
+-- LSP config
 vim.diagnostic.config({ virtual_text = false })
-vim.lsp.enable({ 'lua_ls', 'clangd', 'jedi_language_server' })
+vim.lsp.enable({ 'lua_ls', 'clangd', 'jedi_language_server', 'texlab' })
+
+vim.lsp.config('texlab', {
+  settings = {
+    texlab = {
+      build = {
+        onSave = true,
+      },
+      forwardSearch = {
+        executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
+        args = {
+          "--synctex-forward",
+          "%l:1:%f", -- line 1 is used as column since skim ignores it
+          "%p"       -- full path to the PDF
+        }
+      }
+    }
+  },
+})
