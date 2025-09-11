@@ -18,6 +18,7 @@ return {
       python = { "isort", "black" },
       javascript = { "prettierd", "prettier", stop_after_first = true },
       markdown = { "mdslw" },
+      tex = { "latexindent" },
     },
     default_format_opts = {
       lsp_format = "fallback",

@@ -2,6 +2,7 @@ local g = vim.g
 g.loaded_netrw = 1       -- disable default file explorer
 g.loaded_netrwplugin = 1 -- -||-
 g.mapleader = " "        -- set space as leader key
+g.localleader = " "
 g.coqtail_nomap = 1
 
 local o = vim.opt
@@ -21,15 +22,25 @@ o.termguicolors = true -- use correct colors
 o.scrolloff = 8        -- always keep a gap of X characters between cursor and top/bottom
 o.laststatus = 3
 
+
 -- LSP config
 vim.diagnostic.config({ virtual_text = false })
 vim.lsp.enable({ 'lua_ls', 'clangd', 'jedi_language_server', 'texlab' })
+
+
+-- indent fix for .tex files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "tex",
+  callback = function()
+    vim.bo.indentexpr = ""
+  end,
+})
 
 vim.lsp.config('texlab', {
   settings = {
     texlab = {
       build = {
-        onSave = true,
+        onSave = false,
       },
       forwardSearch = {
         executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",

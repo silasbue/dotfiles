@@ -1,0 +1,3 @@
+#!/bin/bash
+source ~/bin/url2bib-env/bin/activate
+exec python ~/bin/url2bib.py "$@"

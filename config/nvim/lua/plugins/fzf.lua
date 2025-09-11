@@ -18,8 +18,13 @@ return {
         formatter = "path.filename_first"
       },
       winopts = {
-        title_flags = false
-      }
+        title_flags = true
+      },
+      keymap = {
+        fzf = {
+          true,
+        }
+      },
     })
 
     -- Styling

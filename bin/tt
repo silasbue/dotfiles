@@ -1,0 +1,264 @@
+#!/usr/bin/env python3
+
+import json
+import subprocess
+import sys
+from collections import defaultdict
+from datetime import date, datetime, timedelta
+from pathlib import Path
+
+DATA_FILE = Path.home() / ".timetracker.json"
+
+def format_duration(seconds):
+    hours, remainder = divmod(int(seconds), 3600)
+    minutes, secs = divmod(remainder, 60)
+    return f"{hours}h {minutes}m {secs}s"
+
+def load_data():
+    if DATA_FILE.exists():
+        return json.loads(DATA_FILE.read_text())
+    return {"log": [], "current": None}
+
+def save_data(data):
+    DATA_FILE.write_text(json.dumps(data, indent=2))
+
+def start(project):
+    data = load_data()
+    if data["current"]:
+        print(f"Already tracking: {data['current']['project']}")
+        return
+    data["current"] = {"project": project, "start": datetime.now().isoformat()}
+    save_data(data)
+    print(f"Started tracking: {project}")
+
+def stop():
+    data = load_data()
+    current = data.get("current")
+    if not current:
+        print("No task is currently running.")
+        return
+    end = datetime.now()
+    start_time = datetime.fromisoformat(current["start"])
+    duration = (end - start_time).total_seconds()
+    entry = {
+        "project": current["project"],
+        "start": current["start"],
+        "end": end.isoformat(),
+        "duration": duration
+    }
+    data["log"].append(entry)
+    data["current"] = None
+    save_data(data)
+    print(f"Stopped. Tracked {format_duration(duration)} on {entry['project']}.")
+
+def status():
+    data = load_data()
+    current = data.get("current")
+    if not current:
+        print("No task is currently running.")
+        return
+    start_time = datetime.fromisoformat(current["start"])
+    duration = (datetime.now() - start_time).total_seconds()
+    print(f"Tracking: {current['project']} ({format_duration(duration)} minutes)")
+
+def log():
+    data = load_data()
+    if not data["log"]:
+        print("No logs yet.")
+        return
+    for entry in data["log"]:
+        start = entry["start"][:19].replace("T", " ")
+        duration = entry["duration"]
+        print(f"{start} | {entry['project']:20} | {format_duration(duration)}")
+
+
+def parse_args(args):
+    filters = {"since": None, "until": None, "date": None}
+    for i in range(len(args)):
+        if args[i] == "--date" and i + 1 < len(args):
+            filters["date"] = args[i + 1]
+        elif args[i] == "--since" and i + 1 < len(args):
+            filters["since"] = args[i + 1]
+        elif args[i] == "--until" and i + 1 < len(args):
+            filters["until"] = args[i + 1]
+        elif args[i] == "--today":
+            today = date.today().isoformat()
+            filters["date"] = today
+        elif args[i] == "--yesterday":
+            yesterday = (date.today() - timedelta(days=1)).isoformat()
+            filters["date"] = yesterday
+        elif args[i] == "--this-week":
+            start = date.today() - timedelta(days=date.today().weekday())
+            filters["since"] = start.isoformat()
+        elif args[i] == "--last-week":
+            start = date.today() - timedelta(days=date.today().weekday() + 7)
+            end = start + timedelta(days=6)
+            filters["since"] = start.isoformat()
+            filters["until"] = end.isoformat()
+    return filters
+
+def report(filters=None):
+
+    if filters is None:
+        filters = {}
+
+    data = load_data()
+    totals = defaultdict(float)
+
+    for entry in data["log"]:
+        start_time = datetime.fromisoformat(entry["start"])
+
+        if filters.get("date"):
+            target = datetime.fromisoformat(filters["date"])
+            if start_time.date() != target.date():
+                continue
+
+        if filters.get("since"):
+            since = datetime.fromisoformat(filters["since"])
+            if start_time < since:
+                continue
+
+        if filters.get("until"):
+            until = datetime.fromisoformat(filters["until"])
+            if start_time > until:
+                continue
+
+        totals[entry["project"]] += entry["duration"]
+
+    if not totals:
+        print("No data to report.")
+        return
+
+    def format_time(seconds):
+        minutes, sec = divmod(int(seconds), 60)
+        hours, minutes = divmod(minutes, 60)
+        parts = []
+        if hours > 0:
+            parts.append(f"{hours}h")
+        if minutes > 0 or hours > 0:
+            parts.append(f"{minutes}m")
+        parts.append(f"{sec}s")
+        return " ".join(parts)
+
+    print(f"{'Project':25} | Total time")
+    print("-" * 45)
+    for project, total_sec in sorted(totals.items()):
+        print(f"{project:25} | {format_time(total_sec)}")
+
+def pick_project(projects):
+    try:
+        result = subprocess.run(
+            ["fzf", "--border", "--reverse", "--height=~12"], 
+            input="\n".join(sorted(projects)), text=True,
+            capture_output=True, check=True
+        )
+        return result.stdout.strip()
+    except subprocess.CalledProcessError:
+        return None
+
+def pick():
+    data = load_data()
+    projects = {entry["project"] for entry in data["log"]}
+    if not projects:
+        print("No previous projects found.")
+        return
+    project = pick_project(projects)
+    if project:
+        start(project)
+    else:
+        print("No project selected.")
+
+def menu():
+    options = [
+        "Choose project",
+        "Start new project",
+        "Stop tracking",
+        "View current status",
+        "View report (this week)",
+        "View report (today)",
+        "View full report",
+        "Quit",
+    ]
+
+    try:
+        selection = subprocess.run(
+            ["fzf", "--border", "--reverse", "--height=~12"], 
+            input="\n".join(options),
+            text=True, capture_output=True, check=True
+        ).stdout.strip()
+    except subprocess.CalledProcessError:
+        print("No option selected.")
+        return
+
+    if selection == "Start new project":
+        project = input("Enter project name: ").strip()
+        if project:
+            start(project)
+
+    elif selection == "Choose project":
+        pick()
+
+    elif selection == "Stop tracking":
+        stop()
+
+    elif selection == "View current status":
+        status()
+
+    elif selection == "View report (this week)":
+        report({"since": (date.today() - timedelta(days=date.today().weekday())).isoformat()})
+
+    elif selection == "View report (today)":
+        report({"since": date.today().isoformat()})
+
+    elif selection == "View full report":
+        report()
+
+    elif selection == "Quit":
+        print("Goodbye!")
+
+def help():
+    print("Time Tracker CLI")
+    print("Usage:")
+    print("  tt start <project>          Start tracking a new project")
+    print("  tt pick                     Pick a project from history using fzf")
+    print("  tt stop                     Stop tracking the current project")
+    print("  tt status                   Show the current running task")
+    print("  tt log                      Show tracked history")
+    print("  tt report [filters]         Show total time per project")
+    print("  tt                          Open interactive menu")
+    print("")
+    print("Report Filters:")
+    print("  --date YYYY-MM-DD           Show data only for a specific day")
+    print("  --since YYYY-MM-DD          Include entries from this date forward")
+    print("  --until YYYY-MM-DD          Include entries up to this date")
+    print("  --today                     Shortcut for --date today")
+    print("  --yesterday                 Shortcut for --date yesterday")
+    print("  --this-week                 Entries from Monday this week to now")
+    print("  --last-week                 Entries from previous full week")
+def main():
+    if len(sys.argv) < 2:
+        menu()
+        return
+
+    command = sys.argv[1]
+
+    if command == "start" and len(sys.argv) > 2:
+        start(" ".join(sys.argv[2:]))
+    elif command == "pick":
+        pick()
+    elif command == "stop":
+        stop()
+    elif command == "status":
+        status()
+    elif command == "log":
+        log()
+    elif command == "report":
+        filters = parse_args(sys.argv[2:])
+        report(filters)
+    elif command == "menu":
+        menu()
+    else:
+        help()
+
+if __name__ == "__main__":
+    main()

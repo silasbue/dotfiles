@@ -16,6 +16,7 @@ config.max_fps = 120
 -- by default (on macos) left option key is treated as the ALT key
 -- this disables that behaviour and treats it as option instead
 config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = false
 
 config.tab_max_width = 32
 config.tab_bar_at_bottom = true
