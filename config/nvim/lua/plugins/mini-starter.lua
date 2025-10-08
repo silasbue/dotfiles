@@ -1,6 +1,7 @@
 return {
   'echasnovski/mini.starter',
   version = '*',
+  enabled = false,
   config = function()
     local starter = require('mini.starter')
     local is_friday = os.date("%A") == "Friday"

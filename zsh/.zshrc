@@ -187,3 +187,8 @@ export PATH="$PATH:/Users/silasbue/.local/bin"
 # This section can be safely removed at any time if needed.
 [[ ! -r '/Users/silasbue/.opam/opam-init/init.zsh' ]] || source '/Users/silasbue/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/silasbue/.lmstudio/bin"
+# End of LM Studio CLI section
+
