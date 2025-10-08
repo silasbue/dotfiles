@@ -36,6 +36,15 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- fuzzy find files if nvim opens without args
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.fn.argc() == 0 then
+      require("fzf-lua").files()
+    end
+  end,
+})
+
 vim.lsp.config('texlab', {
   settings = {
     texlab = {
