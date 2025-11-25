@@ -25,8 +25,7 @@ o.laststatus = 3
 
 -- LSP config
 vim.diagnostic.config({ virtual_text = false })
-vim.lsp.enable({ 'lua_ls', 'clangd', 'jedi_language_server', 'texlab' })
-
+vim.lsp.enable({ 'lua_ls', 'clangd', 'jedi_language_server', 'texlab', 'gdscript' })
 
 -- indent fix for .tex files
 vim.api.nvim_create_autocmd("FileType", {

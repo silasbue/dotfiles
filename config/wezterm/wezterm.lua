@@ -8,7 +8,7 @@ config.font = wezterm.font('FiraCode Nerd Font Mono', { weight = 600 })
 config.font_size = 14
 config.line_height = 0.95
 config.adjust_window_size_when_changing_font_size = false
-config.window_decorations = 'RESIZE' -- remove title bar
+config.window_decorations = 'RESIZE|MACOS_FORCE_DISABLE_SHADOW' -- remove title bar
 config.initial_cols = 142            -- startup window sizing
 config.initial_rows = 44             -- -||-
 config.max_fps = 120
