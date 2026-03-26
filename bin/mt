@@ -1,0 +1,9 @@
+#!/bin/zsh
+local template=$(find "$HOME/templates/" -mindepth 2 -maxdepth 2 -type d | fzf --delimiter / --with-nth -2..-1 --border --reverse --tac --height=~12)
+if [ -z "$template" ]; then return 1; fi
+local name="$1"
+if [ -z "$name" ]; then
+  echo -n "Enter new folder name: "
+  read name;
+fi
+cp -r $template ./$name
