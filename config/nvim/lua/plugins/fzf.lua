@@ -32,10 +32,17 @@ return {
           true,
         }
       },
-      file_ignore_patterns = {
-        "sprites_mouth/",
-        "sprites_eyes/",
-      },
+      actions = {
+        files = {
+          true,
+          ["ctrl-h"]       = require("fzf-lua").actions.toggle_hidden,
+          ["ctrl-i"]       = require("fzf-lua").actions.toggle_ignore,
+        }
+      }
+      -- file_ignore_patterns = {
+      --   "sprites_mouth/",
+      --   "sprites_eyes/",
+      -- },
     })
 
     -- Styling

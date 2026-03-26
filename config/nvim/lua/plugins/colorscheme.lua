@@ -3,10 +3,7 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      require("tokyonight").setup({
-      })
-    end
+    opts = {}
   },
   {
     "catppuccin/nvim",
@@ -25,8 +22,13 @@ return {
         }
       })
 
-      vim.cmd("colorscheme catppuccin-macchiato")
+      vim.cmd("colorscheme catppuccin-mocha")
     end
+  },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    opts = {}
   },
   {
     "ellisonleao/gruvbox.nvim",

@@ -2,9 +2,9 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.keys = require("wezmaps")
-config.color_scheme = 'catppuccin-macchiato'
+config.color_scheme = 'catppuccin-mocha'
 -- config.color_scheme = 'GruvboxDark'
-config.font = wezterm.font('FiraCode Nerd Font Mono', { weight = 600 })
+config.font = wezterm.font('FiraCode Nerd Font Mono', { weight = 400 })
 config.font_size = 14
 config.line_height = 0.95
 config.adjust_window_size_when_changing_font_size = false
@@ -12,6 +12,9 @@ config.window_decorations = 'RESIZE|MACOS_FORCE_DISABLE_SHADOW' -- remove title 
 config.initial_cols = 142            -- startup window sizing
 config.initial_rows = 44             -- -||-
 config.max_fps = 120
+-- config.window_background_opacity = 0.8
+-- config.macos_window_background_blur = 15
+
 
 -- by default (on macos) left option key is treated as the ALT key
 -- this disables that behaviour and treats it as option instead

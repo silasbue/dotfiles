@@ -22,10 +22,9 @@ o.termguicolors = true -- use correct colors
 o.scrolloff = 8        -- always keep a gap of X characters between cursor and top/bottom
 o.laststatus = 3
 
-
 -- LSP config
-vim.diagnostic.config({ virtual_text = false })
-vim.lsp.enable({ 'lua_ls', 'clangd', 'jedi_language_server', 'texlab', 'gdscript' })
+vim.diagnostic.config({ virtual_lines = false, severity_sort = true })
+vim.lsp.enable({ 'lua_ls', 'clangd', 'jedi_language_server', 'texlab', 'gdscript', 'rust_analyzer', 'vsrocq', 'tinymist' })
 
 -- indent fix for .tex files
 vim.api.nvim_create_autocmd("FileType", {

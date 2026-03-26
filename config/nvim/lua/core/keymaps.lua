@@ -4,20 +4,36 @@ end
 
 -- keymaps are loaded in which-key.lua plugin.
 return {
-  { "<leader>fml", mode = { "n" }, cmd("CellularAutomaton make_it_rain"), desc = "Make it rain" },
-  { "<leader>s", mode = { "n" }, cmd("write"), desc = "Save current Buffer" },
-  { "<tab>",     mode = { "n" }, cmd("bn"),    desc = "Go to next Buffer" },
-  { "<m-n>",     mode = { "n" }, cmd("bn"),    desc = "Go to next Buffer" },
-  { "<s-tab>",     mode = { "n" }, cmd("bp"),    desc = "Go to previous Buffer" },
+  { "<leader>fml", mode = { "n" }, cmd("CellularAutomaton make_it_rain"),   desc = "Make it rain" },
+  {
+    "Æ",
+    mode = { "n" },
+    function()
+      require('neoscroll').scroll(0.2, { move_cursor = false, duration = 150 })
+    end,
+    desc = "scroll down"
+  },
+  {
+    "Ø",
+    mode = { "n" },
+    function()
+      require('neoscroll').scroll(-0.2, { move_cursor = false, duration = 150 })
+    end,
+    desc = "scroll down"
+  },
+  { "<leader>s",   mode = { "n" }, cmd("write"),                            desc = "Save current Buffer" },
+  { "<tab>",       mode = { "n" }, cmd("bn"),                               desc = "Go to next Buffer" },
+  { "<s-tab>",     mode = { "n" }, cmd("bp"),                               desc = "Go to previous Buffer" },
   -- { "<tab>",     mode = { "n" }, "<c-6>",      desc = "Go to *last* Buffer" },
-  { "<leader>q", mode = { "n" }, cmd("bd"),    desc = "Close current Buffer" },
-  { "<leader>a", mode = { "n" }, "ggVG",       desc = "Highlight all text" },
+  { "<leader>q",   mode = { "n" }, cmd("bd"),                               desc = "Close current Buffer" },
+  { "<leader>a",   mode = { "n" }, "ggVG",                                  desc = "Highlight all text" },
   -- { "<c-h>", mode = { "n" }, "<c-w>h" },
   -- { "<c-j>", mode = { "n" }, "<c-w>j" },
   -- { "<c-k>", mode = { "n" }, "<c-w>k" },
   -- { "<c-l>", mode = { "n" }, "<c-w>l" },
-  { "<leader>k", mode = { "n" }, "<c-]>", desc = "Jump to Subject" },
-  { "<c-q>", mode = { "n" }, ":qall<cr>", desc = "Quit All" },
+  { "<leader>æ",   mode = { "n" }, "<c-]>",                                 desc = "Jump to Subject" },
+  { "<c-q>",       mode = { "n" }, ":qall<cr>",                             desc = "Quit All" },
+  { "<leader>u",   mode = { "n" }, ":UndotreeToggle<cr>:UndotreeFocus<cr>", desc = "UndoTree Toggle" },
   {
     "<leader>mm",
     mode = { "n" },
@@ -32,8 +48,8 @@ return {
     "gK",
     mode = { "n" },
     function()
-      local new_config = not vim.diagnostic.config().virtual_text
-      vim.diagnostic.config({ virtual_text = new_config })
+      local new_config = not vim.diagnostic.config().virtual_lines
+      vim.diagnostic.config({ virtual_lines = new_config })
     end,
     desc = "Toggle diagnostic virtual_text"
   }

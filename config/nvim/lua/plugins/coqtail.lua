@@ -1,5 +1,10 @@
 return {
   'whonore/Coqtail',
+  -- add the init below if using vsrocq instead.
+  -- init = function()
+  --     vim.g.loaded_coqtail = 1
+  --     vim.g["coqtail#supported"] = 0
+  -- end,
   ft = "coq",
   config = function()
     require("which-key").add({
@@ -7,6 +12,9 @@ return {
       { "<leader>cq", function() vim.cmd("CoqStop") end,   mode = { "n" },      desc = "coq stop" },
       { "<c-n>",      function() vim.cmd("CoqNext") end,   mode = { "n", "i" }, desc = "coq next" },
       { "<c-p>",      function() vim.cmd("CoqUndo") end,   mode = { "n", "i" }, desc = "coq undo" },
+      { "æ",          function() vim.cmd("CoqNext") end,   mode = { "n" },      desc = "coq next" },
+      { "ø",          function() vim.cmd("CoqUndo") end,   mode = { "n" },      desc = "coq undo" },
+      { "å",          function() vim.cmd("CoqToLine") end, mode = { "n" },      desc = "coq to line" },
       { "<leader>cl", function() vim.cmd("CoqToLine") end, mode = { "n" },      desc = "coq to line" },
       {
         "<leader>cs",

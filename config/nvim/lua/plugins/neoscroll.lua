@@ -9,5 +9,9 @@ return {
     { "zb" },
     { "zz" }
   },
-  opts = {}
+  opts = {
+    hide_cursor = false,
+    duration_multiplier = 0.8
+
+  }
 }
