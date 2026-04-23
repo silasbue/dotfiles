@@ -18,25 +18,24 @@ vim.opt.showtabline = 2
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- TODO: add descriptions to keymaps
 -- GLOBAL KEYMAPS
 vim.keymap.set("n", "<leader>s", function()
 	vim.cmd("write")
 end, { desc = "save/write buffer" })
 vim.keymap.set("n", "<leader>q", function()
 	vim.cmd("bd")
-end)
-vim.keymap.set("n", "<leader>a", "ggVG")
-vim.keymap.set("t", "<esc>", "<c-\\><c-n>")
+end, { desc = "delete buffer" })
+vim.keymap.set("n", "<leader>a", "ggVG", { desc = "visual select all" })
+vim.keymap.set("t", "<esc>", "<c-\\><c-n>", { desc = "escape terminal mode" })
 vim.keymap.set("n", "<tab>", function()
 	vim.cmd("b#")
-end)
+end, { desc = "go to alternate buffer" })
 vim.keymap.set("n", "<leader>R", function()
 	vim.cmd("restart")
-end)
+end, { desc = "restart neovim" })
 vim.keymap.set("n", "gK", function()
 	vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
-end)
+end, { desc = "toggle virtual_lines diagnostics" })
 
 -- BUILTIN PLUGINS
 vim.cmd("packadd nohlsearch")
@@ -65,7 +64,7 @@ vim.pack.add({
 })
 
 -- TREESITTER
-local ts_parsers = { "python", "typst", "rust" }
+local ts_parsers = { "python", "typst", "rust", "gdscript"}
 require("nvim-treesitter").install(ts_parsers)
 vim.api.nvim_create_autocmd("FileType", {
   callback = function(args)
